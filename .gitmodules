@@ -1,4 +1,4 @@
 [submodule "CLIPS"]
 	path = CLIPS
 	url = https://github.com/mtsr/CLIPS.git
-	branch = 65x
+	branch = 64x
