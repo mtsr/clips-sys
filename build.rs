@@ -5,6 +5,8 @@ use std::path::{Path, PathBuf};
 use std::process::Command;
 
 fn main() {
+  let out_dir = PathBuf::from(env::var("OUT_DIR").unwrap());
+  
   if !Path::new("CLIPS/.git").exists() {
     let _ = Command::new("git")
       .args(&["submodule", "update", "--init"])
@@ -21,7 +23,7 @@ fn main() {
   println!("cargo:rustc-link-lib=static=clips");
   println!("cargo:rustc-link-search=./CLIPS/core/");
 
-  let out_path = PathBuf::from(env::var("OUT_DIR").unwrap()).join("bindings.rs");
+  let out_path = out_dir.join("bindings.rs");
 
   if !out_path.exists() {
     // The bindgen::Builder is the main entry point

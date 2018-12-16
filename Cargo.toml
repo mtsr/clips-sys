@@ -1,7 +1,14 @@
 [package]
 name = "clips-sys"
+description = "Bindgen generated wrapper for CLIPS (clipsrules.net)"
+repository = "https://github.com/mtsr/clips-sys"
+documentation = "https://docs.rs/clips-sys/"
+readme = "README.md"
+keywords = ["clips", "rete", "rules", "rules-engine", "expert-system"]
+categories = ["external-ffi-bindings"]
+license = "MIT"
 version = "6.40.0"
-authors = ["Jonas Matser <jonas@jonasmatser.nl>"]
+authors = ["Jonas Matser <crates@jonasmatser.nl>"]
 links = "clips"
 build = "build.rs"
 
