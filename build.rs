@@ -26,6 +26,10 @@ fn main() {
     .args(&["checkout", "64x"])
     .status();
 
+  if env::var("DEBUG").is_ok() {
+    let _ = Command::new("sed").current_dir(&out_dir.join("CLIPS")).args(&["-i", "''", "s/#define DEVELOPER 0/#define DEVELOPER 1/","core/setup.h"]).status();
+  }
+
   // prepare make command
   let mut cmd = Command::new("make");
 
