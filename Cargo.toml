@@ -12,7 +12,11 @@ authors = ["Jonas Matser <crates@jonasmatser.nl>"]
 links = "clips"
 build = "build.rs"
 
+[features]
+developer = []
+
 [dependencies]
 
 [build-dependencies]
-bindgen = "0.45.0"
+bindgen = "0.46.0"
+cc = "1.0.26"
