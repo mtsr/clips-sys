@@ -20,19 +20,27 @@ fn main() {
         None => false,
         Some(extension) => extension == "c",
       })
-      // TODO #define DEVELOPER 1 if feature is set
+      // suppress developer.c because it causes empty .o warning
       .filter(|path| cfg!(feature = "developer") || !path.ends_with("developr.c"));
 
   eprintln!("{:?}", files);
 
-  cc::Build::new()
+  let mut build = cc::Build::new();
+
+  build
     .files(files)
     .include(&clips_core_dir)
     // .warnings(false)
     .out_dir(&out_dir)
     // Exclude current CLIPS compile warnings
     .flag("-Wno-unused-parameter")
-    .flag("-Wno-missing-field-initializers")
+    .flag("-Wno-missing-field-initializers");
+
+  if cfg!(feature = "developer") {
+    build.define("DEVELOPER", "1");
+  }
+
+  build
     .compile("clips");
   
   let _res = std::fs::copy(PathBuf::from("wrapper.h"), &out_dir.join("wrapper.h"));
