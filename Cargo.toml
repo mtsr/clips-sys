@@ -7,7 +7,7 @@ readme = "README.md"
 keywords = ["clips", "rete", "rules", "rules-engine", "expert-system"]
 categories = ["external-ffi-bindings"]
 license = "MIT"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["Jonas Matser <crates@jonasmatser.nl>"]
 links = "clips"
 build = "build.rs"
@@ -19,4 +19,4 @@ developer = []
 
 [build-dependencies]
 bindgen = "0.46.0"
-cc = "1.0.26"
+cc = "1.0.28"
